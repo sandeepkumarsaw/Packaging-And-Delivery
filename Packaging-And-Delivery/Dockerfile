@@ -1,17 +1,21 @@
 
-FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build-env
+FROM mcr.microsoft.com/dotnet/aspnet:3.1 AS base
 WORKDIR /app
+EXPOSE 80
+EXPOSE 443
 
-# Copy csproj and restore as distinct layers
-COPY *.csproj ./
-RUN dotnet restore
+FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
+WORKDIR /src
+COPY ["Packaging-And-Delivery/Packaging-And-Delivery.csproj", "Packaging-And-Delivery/"]
+RUN dotnet restore "MyfirstWebApi/MyfirstWebApi.csproj"
+COPY . .
+WORKDIR "/src/MyfirstWebApi"
+RUN dotnet build "MyfirstWebApi.csproj" -c Release -o /app/build
 
-# Copy everything else and build
-COPY . ./
-RUN dotnet publish -c Release -o out
+FROM build AS publish
+RUN dotnet publish "MyfirstWebApi.csproj" -c Release -o /app/publish
 
-# Build runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:3.1
+FROM base AS final
 WORKDIR /app
-COPY --from=build-env /app/out .
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Packaging-And-Delivery.dll"]
