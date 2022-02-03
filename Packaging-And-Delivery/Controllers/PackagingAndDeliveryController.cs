@@ -30,7 +30,7 @@ namespace Packaging_And_Delivery.Controllers
             myService = service;
         }
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult PackagingAndDelivery(PackagingAndDeliveryInputs input)
         {
 
