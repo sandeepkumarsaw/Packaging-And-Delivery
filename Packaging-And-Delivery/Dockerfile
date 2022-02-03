@@ -1,22 +1,17 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-FROM mcr.microsoft.com/dotnet/aspnet:3.1 AS base
+FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build-env
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
-WORKDIR /src
-COPY ["Packaging-And-Delivery/Packaging-And-Delivery.csproj", "Packaging-And-Delivery/"]
-RUN dotnet restore "Packaging-And-Delivery/Packaging-And-Delivery.csproj"
-COPY . .
-WORKDIR "/src/Packaging-And-Delivery"
-RUN dotnet build "Packaging-And-Delivery.csproj" -c Release -o /app/build
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
 
-FROM build AS publish
-RUN dotnet publish "Packaging-And-Delivery.csproj" -c Release -o /app/publish
+# Copy everything else and build
+COPY ../engine/examples ./
+RUN dotnet publish -c Release -o out
 
-FROM base AS final
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:3.1
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "Packaging-And-Delivery.dll"]
