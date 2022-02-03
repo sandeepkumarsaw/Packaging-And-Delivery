@@ -7,13 +7,13 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
 WORKDIR /src
 COPY ["Packaging-And-Delivery/Packaging-And-Delivery.csproj", "Packaging-And-Delivery/"]
-RUN dotnet restore "MyfirstWebApi/MyfirstWebApi.csproj"
+RUN dotnet restore "Packaging-And-Delivery/Packaging-And-Delivery.csproj"
 COPY . .
-WORKDIR "/src/MyfirstWebApi"
-RUN dotnet build "MyfirstWebApi.csproj" -c Release -o /app/build
+WORKDIR "/src/Packaging-And-Delivery"
+RUN dotnet build "Packaging-And-Delivery.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "MyfirstWebApi.csproj" -c Release -o /app/publish
+RUN dotnet publish "Packaging-And-Delivery.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
