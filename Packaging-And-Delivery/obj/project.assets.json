@@ -295,25 +295,30 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vamse\\.nuget\\packages\\": {},
-    "D:\\VisualStudioShared\\NuGetPackages": {}
+    "C:\\Users\\user\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vamse\\Desktop\\Packaging-And-Delivery\\Packaging-And-Delivery\\Packaging-And-Delivery.csproj",
+      "projectUniqueName": "E:\\cts\\Return-Order-Management\\Packaging-And-Delivery\\Packaging-And-Delivery\\Packaging-And-Delivery.csproj",
       "projectName": "Packaging-And-Delivery",
-      "projectPath": "C:\\Users\\vamse\\Desktop\\Packaging-And-Delivery\\Packaging-And-Delivery\\Packaging-And-Delivery.csproj",
-      "packagesPath": "C:\\Users\\vamse\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vamse\\Desktop\\Packaging-And-Delivery\\Packaging-And-Delivery\\obj\\",
+      "projectPath": "E:\\cts\\Return-Order-Management\\Packaging-And-Delivery\\Packaging-And-Delivery\\Packaging-And-Delivery.csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "E:\\cts\\Return-Order-Management\\Packaging-And-Delivery\\Packaging-And-Delivery\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\VisualStudioShared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\vamse\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -365,7 +370,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
       }
     }
   }
